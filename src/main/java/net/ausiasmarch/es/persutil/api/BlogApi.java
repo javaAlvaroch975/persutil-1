@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import net.ausiasmarch.es.persutil.service.BlogService;
 
 import net.ausiasmarch.es.persutil.service.AleatorioService;
+import net.ausiasmarch.es.persutil.service.BlogService;
 
 @RestController
 @RequestMapping("/blog")
@@ -56,7 +56,7 @@ public class BlogApi {
 
     @GetMapping("/rellenauno")
     public ResponseEntity<Long> rellenaBlog(){
-        return ResponseEntity.ok(oBlogService.rellenaBlog());
+        return ResponseEntity.ok(oBlogservice.rellenaBlog());
     }
 
 }
