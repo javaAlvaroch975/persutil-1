@@ -10,9 +10,9 @@ public class AleatorioService {
     }
 
     public String[] generarFraseAleatoria(){
-        String[] palabras = {"No", "Que", "Perdón", "Gracias", "Como", "Cuando", "Quien",
-         "Hola", "Adiós", "Benvenido", "Sí", "Java", "Typescript", "Web", "Cliente", "Servidor", "Rafa",
-          "Alejandro", "Bien", "Mal", "Blog", "Post", "Palabra", "Aleatorio", "Genshin",};
+        String[] palabras = {"No", "Que", "Perdon", "Gracias", "Como", "Cuando", "Quien",
+         "Hola", "Adios", "Bienvenido", "Si", "Java", "Typescript", "Web", "Cliente", "Servidor", "Rafa",
+         "Bien", "Mal", "Blog", "Post", "Palabra", "Aleatorio", "Honkai", "Alvaro",};
           String[] frase = new String[5];
             for (int i = 0; i < 5; i++) {
                 int indiceAleatorio = generarNumeroAleatorio(0, palabras.length - 1);

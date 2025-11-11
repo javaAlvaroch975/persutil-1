@@ -12,11 +12,12 @@ public class RootApi {
 
     @GetMapping
     public ResponseEntity<String> home() {
-        return new ResponseEntity<>("¡Bienvenido a PersUtil API! 🚀<br>" +
+        return new ResponseEntity<>("Funciona, bienvenido a persutil<br>" +
                 "Endpoints disponibles:<br>" +
                 "- /blog/saludar<br>" +
                 "- /blog/aleatorio<br>" +
                 "- /blog/rellenauno<br>" +
+                "- /blog/frasealeatoria<br>" +
                 "- /status<br>", HttpStatus.OK);
     }
     

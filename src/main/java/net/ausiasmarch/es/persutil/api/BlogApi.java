@@ -27,18 +27,18 @@ public class BlogApi {
 
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar() {
-        return new ResponseEntity<>("¡Hola desde la API de Blog!", HttpStatus.OK);
+        return new ResponseEntity<>("Hola desde la API de Blog", HttpStatus.OK);
 
     }
 
     @GetMapping("/saludar/{nombre}")
     public ResponseEntity<String> saludarNombre(@PathVariable String nombre) {
-        return new ResponseEntity<>("¡Hola " + nombre + " desde la API de Blog!", HttpStatus.OK);
+        return new ResponseEntity<>("Hola " + nombre + " desde la API de Blog", HttpStatus.OK);
     }
 
     @GetMapping("/saludar/buenosdias")
     public ResponseEntity<String> saludarBuenosDias() {
-        return new ResponseEntity<>("¡Buenos días desde la API de Blog!", HttpStatus.OK);
+        return new ResponseEntity<>("Buenos dias desde la API de Blog", HttpStatus.OK);
     }
 
     @GetMapping("/aleatorio")
