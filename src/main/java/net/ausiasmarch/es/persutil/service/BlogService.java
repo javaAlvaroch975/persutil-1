@@ -10,21 +10,19 @@ import net.ausiasmarch.es.persutil.repository.BlogRepository;
 
 @Service
 public class BlogService {
-    
 
     @Autowired
     BlogRepository oBlogRepository;
 
-    public Long rellenaBlog(){
+    public Long rellenaBlog() {
         BlogEntity oBlogEntity = new BlogEntity();
-        oBlogEntity.setTitulo("Mi primer blog");
-        oBlogEntity.setContenido("Contenido del blog");
-        oBlogEntity.setEtiquetas("eitqueta1, etiqueta2");
+        oBlogEntity.setTitulo("Primer Post");
+        oBlogEntity.setContenido("Este es el contenido de mi primer post en el blog.");
+        oBlogEntity.setEtiquetas("etiqueta1, etiqueta2");
         oBlogEntity.setFechaCreacion(LocalDateTime.now());
-        oBlogEntity.setFechamodificacion(null);
-        oBlogRepository.save(oBlogEntity);
-        return oBlogRepository.count();
+        oBlogEntity.setFechaModificacion(null);
+        
+        BlogEntity savedEntity = oBlogRepository.save(oBlogEntity);
+        return savedEntity.getId();
     }
-
-
 }

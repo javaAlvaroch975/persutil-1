@@ -27,25 +27,21 @@ public class BlogEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private Long id;
     @NotNull
     @Size(min = 3, max = 1024)
     private String titulo;
-
     @NotNull
     @Size(min = 3)
     private String contenido;
-
     @NotNull
     @Size(min = 3, max = 1024)
     private String etiquetas;
-
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime fechaCreacion;
-
     @Nullable
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
-    private LocalDateTime fechamodificacion;
+    private LocalDateTime fechaModificacion;
+
 }

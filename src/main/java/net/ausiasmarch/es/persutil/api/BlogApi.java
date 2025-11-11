@@ -14,48 +14,43 @@ import net.ausiasmarch.es.persutil.service.BlogService;
 @RestController
 @RequestMapping("/blog")
 public class BlogApi {
-    
 
     @Autowired
-    AleatorioService oAleatorioService;
+    AleatorioService aleatorioService;
 
     @Autowired
     BlogService oBlogService;
 
     @GetMapping("/saludar")
-    public ResponseEntity<String> saludar(){
-        return new ResponseEntity<>("\"Hola desde el blog\"", HttpStatus.OK);
+    public ResponseEntity<String> saludar() {
+        return new ResponseEntity<>("¡Hola desde la API de Blog!", HttpStatus.OK);
+
+    }
+
+    @GetMapping("/saludar/{nombre}")
+    public ResponseEntity<String> saludarNombre(@PathVariable String nombre) {
+        return new ResponseEntity<>("¡Hola " + nombre + " desde la API de Blog!", HttpStatus.OK);
     }
 
     @GetMapping("/saludar/buenosdias")
-    public ResponseEntity<String> saludarPorLaMañana(){
-        return new ResponseEntity<>("\"Hola, buenos días desde el blog\"", HttpStatus.OK);
+    public ResponseEntity<String> saludarBuenosDias() {
+        return new ResponseEntity<>("¡Buenos días desde la API de Blog!", HttpStatus.OK);
     }
 
     @GetMapping("/aleatorio")
-    public ResponseEntity<Integer> aleatorio(){
-        int numeroAleatorio = (int) (Math.random() * 100) +1;
-        return ResponseEntity.ok(numeroAleatorio);
-    }
-
-    @GetMapping("/aleatorio/{min}/{max}")
-    public ResponseEntity<Integer> aleatorioEnRango(
-            @PathVariable int min,
-            @PathVariable int max){
-        int numeroAleatorio = (int) (Math.random() * (max - min + 1)) +min;
-        return ResponseEntity.ok(numeroAleatorio);
+    public ResponseEntity<Integer> aleatorio() {
+        int numeroAleatorio = (int) (Math.random() * 100) + 1;
+        return new ResponseEntity<>(numeroAleatorio, HttpStatus.OK);
     }
 
     @GetMapping("/aleatorio/service/{min}/{max}")
-    public ResponseEntity<Integer> aleatorioServiceEnRango(
-            @PathVariable int min,
-            @PathVariable int max){
-        
-        return ResponseEntity.ok(oAleatorioService.generarNumeroAleatorio(min, max));
+    public ResponseEntity<Integer> aleatorioEnRango(@PathVariable int min, @PathVariable int max) {
+        int numeroAleatorio = aleatorioService.generarNumeroAleatorio(min, max);
+        return new ResponseEntity<>(numeroAleatorio, HttpStatus.OK);
     }
 
     @GetMapping("/rellenauno")
-    public ResponseEntity<Long> rellenaBlog(){
+    public ResponseEntity<Long> rellenaUno() {
         return ResponseEntity.ok(oBlogService.rellenaBlog());
     }
 
