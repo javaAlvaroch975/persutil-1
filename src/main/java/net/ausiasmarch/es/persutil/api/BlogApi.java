@@ -20,7 +20,7 @@ public class BlogApi {
     AleatorioService oAleatorioService;
 
     @Autowired
-    BlogService oBlogService;
+    BlogService oBlogservice;
 
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar(){
