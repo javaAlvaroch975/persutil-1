@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.ausiasmarch.es.persutil.entity.BlogEntity;
 import net.ausiasmarch.es.persutil.service.AleatorioService;
 import net.ausiasmarch.es.persutil.service.BlogService;
 
@@ -20,6 +21,9 @@ public class BlogApi {
 
     @Autowired
     BlogService oBlogService;
+
+    @Autowired
+    BlogEntity oBlogEntity;
 
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar() {
@@ -52,6 +56,18 @@ public class BlogApi {
     @GetMapping("/rellenauno")
     public ResponseEntity<Long> rellenaUno() {
         return ResponseEntity.ok(oBlogService.rellenaBlog());
+    }
+
+    @GetMapping("/frasealeatoria")
+    public ResponseEntity<String[]> fraseAleatoria(){
+        String[] frase = aleatorioService.generarFraseAleatoria();
+        oBlogEntity.setTitulo(frase[0] + " " + frase[1] + " " + frase[2] + " " + frase[3] + " " + frase[4]);
+        frase = aleatorioService.generarFraseAleatoria();
+        oBlogEntity.setContenido(frase[0] + " " + frase[1] + " " + frase[2] + " " + frase[3] + " " + frase[4]);
+        frase = aleatorioService.generarFraseAleatoria();
+        oBlogEntity.setEtiquetas(frase[0] + " " + frase[1] + " " + frase[2] + " " + frase[3] + " " + frase[4]);
+        return new ResponseEntity<>(frase, HttpStatus.OK);
+    
     }
 
 }
