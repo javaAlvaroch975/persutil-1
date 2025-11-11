@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.ausiasmarch.es.persutil.service.AleatorioService;
+import net.ausiasmarch.es.persutil.service.BlogService;
 
 @RestController
 @RequestMapping("/blog")
@@ -16,6 +17,9 @@ public class BlogApi {
 
     @Autowired
     AleatorioService aleatorioService;
+
+    @Autowired
+    BlogService oBlogService;
 
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar() {
@@ -43,6 +47,11 @@ public class BlogApi {
     public ResponseEntity<Integer> aleatorioEnRango(@PathVariable int min, @PathVariable int max) {
         int numeroAleatorio = aleatorioService.generarNumeroAleatorio(min, max);
         return new ResponseEntity<>(numeroAleatorio, HttpStatus.OK);
+    }
+
+    @GetMapping("/rellenauno")
+    public ResponseEntity<Long> rellenaUno() {
+        return ResponseEntity.ok(oBlogService.rellenaBlog());
     }
 
 }
