@@ -22,9 +22,6 @@ public class BlogApi {
     @Autowired
     BlogService oBlogService;
 
-    @Autowired
-    BlogEntity oBlogEntity;
-
     @GetMapping("/saludar")
     public ResponseEntity<String> saludar() {
         return new ResponseEntity<>("Hola desde la API de Blog", HttpStatus.OK);
@@ -60,6 +57,7 @@ public class BlogApi {
 
     @GetMapping("/frasealeatoria")
     public ResponseEntity<String[]> fraseAleatoria(){
+        BlogEntity oBlogEntity = new BlogEntity();
         String[] frase = aleatorioService.generarFraseAleatoria();
         oBlogEntity.setTitulo(frase[0] + " " + frase[1] + " " + frase[2] + " " + frase[3] + " " + frase[4]);
         frase = aleatorioService.generarFraseAleatoria();
